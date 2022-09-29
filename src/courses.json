@@ -1,0 +1,26 @@
+[
+    {
+        "id":"1",
+        "descripcion":"programacion movil",
+        "profesor":"peranito",
+        "horario":"nocturno"
+    },
+    {
+        "id":"2",
+        "descripcion":"programacion movil",
+        "profesor":"peranito",
+        "horario":"diurno"
+    },
+    {
+        "id":"3",
+        "descripcion":"programacion orientado a objetos",
+        "profesor":"juan",
+        "horario":"mañana"
+    },
+    {
+        "id":"4",
+        "descripcion":"programacion Iot",
+        "profesor":"fulanito",
+        "horario":"diurno"
+    }
+]
