@@ -4,6 +4,7 @@ const cors = require('cors');
 const app =  express();
 const config = require('./config');
 
+
 //middleware
 app.use(morgan('dev'));
 app.use(express.json());
@@ -13,5 +14,6 @@ app.use(cors());
 app.use(require('./routers/routers'));
 
 app.listen(config.port, ()=>{
+
     console.log( `corriendo por el puerto ${config.port} y en localhost`);
 })

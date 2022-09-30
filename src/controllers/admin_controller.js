@@ -6,12 +6,12 @@ const admin_repository = require('../repositories/admin_repository')
 adminController.getAll = (req, res) => {
     //logica para listar todos los cursos
     admin_repository.getAll()
-        .then((admins) => {
+        .then((admin) => {
             //si devuelve mas de un registro
             if (admins.rows.length == 0) {
                 res.status(400).send('Not Found');
             }
-            res.json(admins.rows);
+            res.json(admin.rows);
         })
         .catch((error) => {
             res.status(500).send(error.stack);
@@ -21,11 +21,11 @@ adminController.getAll = (req, res) => {
 adminController.getById = (req, res) => {
     const id = req.params['id']
     admin_repository.getById(id)
-        .then((admins) => {
-            if (admins.rows.length == 0) {
+        .then((admin) => {
+            if (admin.rows.length == 0) {
                 res.status(400).send({});
             }
-            res.json(admins.rows);
+            res.json(admin.rows);
         })
         .catch((error) => {
             res.status(500).send('Not Found' + error.stack);
@@ -44,7 +44,7 @@ adminController.create = (req, res) => {
                 res.status(400).send({});
             }
             //si inserto correctamente
-            course.Id = resp.rows[0].id
+            Admin.Id = resp.rows[0].id
             res.status(201).send(Admin);
         })
         .catch((error) => {
@@ -57,9 +57,9 @@ adminController.update = (req, res) => {
     //capturamos body request
     const newadmin = req.body;
     //crear modelo tipo course
-    let admin = new admin(id,newadmin.username,newadmin.email,newadmin.password)
-    admin_repository.update(admin)
-        .then((resp) => {
+    let Admin = new admin(id,newadmin.username,newadmin.email,newadmin.password)
+    admin_repository.update(Admin)
+        .then((res) => {
             //si actualizo correctamente
             res.status(200).send(course);
         })
