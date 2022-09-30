@@ -16,12 +16,8 @@ const getConnection = ()  => {
   try {
     const conn = pool.query('SELECT NOW()')
     if(conn !== null){
-      console.error("se conecto");
       return pool;
-
-    } else {
-      console.error("No se conecto");
-    }
+    } 
   } catch (error) {
     console.error(error);
   }

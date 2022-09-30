@@ -1,3 +1,4 @@
+const ingreso = require('../models/ingreso')
 const pool = require('./dbconnection')
 const ticket_repository = {}
 
@@ -11,9 +12,9 @@ ticket_repository.getById = (id) => {
   return context.query('select * from course where id=$1',[id])
 }
 
-ticket_repository.create = (course) => {
+ticket_repository.create = (Ingreso) => {
   const context =  pool()
-  return context.query('insert into course (description,teacher) values ($1,$2) RETURNING id',[course.Description,course.Teacher])
+  return context.query('insert into ingreso (placa,fechaentrada,horaentrada,celda,celdadisponible) values ($1,$2,$3,$4,$5) RETURNING placa',[Ingreso.placa,Ingreso.fechaentrada,Ingreso.horaentrada,Ingreso.celda,Ingreso.celdadisponible])
 }
 
 ticket_repository.update = (course) => {

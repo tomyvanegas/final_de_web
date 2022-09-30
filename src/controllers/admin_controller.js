@@ -57,11 +57,11 @@ adminController.update = (req, res) => {
     //capturamos body request
     const newadmin = req.body;
     //crear modelo tipo course
-    let Admin = new admin(id,newadmin.username,newadmin.email,newadmin.password)
+    let Admin = new admin(newadmin.username,newadmin.email,newadmin.password)
     admin_repository.update(Admin)
-        .then((res) => {
+        .then((resp) => {
             //si actualizo correctamente
-            res.status(200).send(course);
+            res.status(200).send(Admin);
         })
         .catch((error) => {
             res.status(500).send('Not Found' + error.stack);
@@ -69,9 +69,9 @@ adminController.update = (req, res) => {
 }
 adminController.delete = (req, res) => {
     //capturamos queryParams
-    const id = req.params['id']
+    const id = req.params['Id']
     admin_repository.delete(id)
-        .then((res) => {
+        .then((resp) => {
             //si elimino correctamente
             res.status(200);
         })

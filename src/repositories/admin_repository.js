@@ -13,7 +13,12 @@ admin_repository.create = (Admin) => {
 
 admin_repository.update = (Admin) => {
     const context =  pool()
-    return context.query('update adminuser SET username = $2, email = $3, password = 4$ where id=$1',[Admin.Id,Admin.username,Admin.email,Admin.password])
+    return context.query('update adminuser SET username = $2, email = $3, password = $4 where id=$1',[Admin.id,Admin.username,Admin.email,Admin.password])
   }
+
+admin_repository.delete = (id) => {
+    const context =  pool()
+    return context.query('delete from adminuser where id=$1',[id])
+}
 
   module.exports = admin_repository;
